@@ -1,0 +1,21 @@
+react-native init NomeDoProjeto --template rocketseat-basic
+- Criando aplicação com template basico do rocketseat
+
+code .
+- Abrir a pasta do codigo no visual studio pelo cmd
+
+react-native start --reset-cache
+- Usar no cmd pra reeiniciar a aplicação resetando a cache (resolve varios bugs)
+
+import { StatusBar } from 'react-native';
+<StatusBar barStyle='light-content' backgroundColor='black' />
+- Mudar a cor da barra de cima (onde fica hora, bateria etc)
+
+https://material.io/tools/icons/
+- Site para pegar icones para o react native (troca o _ por - no código)
+
+import { StyleSheet } from 'react-native';
+border-top-width: ${StyleSheet.hairlineWidth}px;
+- Criando linha com largura menor que 1px
+
+
