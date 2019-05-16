@@ -1,7 +1,10 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
+// Importing the API from React Native animations
 import { Animated } from 'react-native';
+
+// Importing the Pan Gesture Handler to capture the drag movement
 import { PanGestureHandler, State } from 'react-native-gesture-handler';
 
 import Header from '~/components/Header';
@@ -11,9 +14,12 @@ import Menu from '~/components/Menu';
 import { Container, Content, Card, CardHeader, CardContent, CardFooter, Title, Description, Annotation } from './styles';
 
 export default function Main() {
+  
+  // Saving the value of how many pixels the user dragged down or up
   let offset = 0;
   const translateY = new Animated.Value(0);
 
+  // Capturing the position of the white card and passing to the variable translateY
   const animatedEvent = Animated.event (
     [
       {
@@ -32,6 +38,7 @@ export default function Main() {
 
       offset += translationY;
 
+      // When the pixel value the user dragged is >= 100, the white card will drop completely
       if (translationY >= 100) {
         opened = true;
       } else {
@@ -39,11 +46,14 @@ export default function Main() {
         translateY.setOffset(0);
         offset = 0;
       }
-
+ 
+      // If the variable opened is true, that is, the user wants to open the menu. Then the white card moves down, if not, it returns to its starting point
       Animated.timing(translateY, {
         toValue: opened ? 380 : 0,
         duration: 200,
         useNativeDriver: true,
+
+      // Checking whether the starting position is 380: with the menu open or 0: with the menu closed
       }).start(() => {
         offset = opened ? 380 : 0;
         translateY.setOffset(offset);
@@ -63,7 +73,9 @@ export default function Main() {
           onGestureEvent={animatedEvent} 
           onHandlerStateChange={onHandlerStateChanged}
         >
-         <Card style={{
+
+          {/* Limiting movement of the white card */}
+          <Card style={{
            transform:[{
              translateY: translateY.interpolate({
                inputRange: [-350, 0, 380],
@@ -71,18 +83,20 @@ export default function Main() {
                extrapolate: 'clamp',
              }),
            }],
-         }}>
+          }}>
+
+           {/* Creating the white card */}
            <CardHeader>
               <Icon name='attach-money' size={28} color='#666' />
               <Icon name='visibility-off' size={28} color='#666' />
             </CardHeader>
             <CardContent>
-              <Title>Saldo Disponível</Title>
-              <Description>R$ 197.611,65</Description>
+              <Title>Balance available</Title>
+              <Description>US$ 97.611,65</Description>
             </CardContent>
             <CardFooter>
               <Annotation>
-                Transferência de R$ 20,00 recebida de Josias Silvestre Maia Feitosa hoje às 06:00h 
+                Transfer of US$ 20.00 received from Josias Silvestre Maia Feitosa today at 06:00 hours
               </Annotation>
             </CardFooter>
           </Card>

@@ -1,6 +1,7 @@
 import { Animated } from 'react-native';
 import styled from 'styled-components/native';
 
+// Creating stylized components
 export const Container = styled(Animated.View)`
   height: 100px;
   margin-top: 20px;
@@ -9,6 +10,7 @@ export const Container = styled(Animated.View)`
 export const TabsContainer = styled.ScrollView.attrs({
     horizontal: true,
     contentContainerStyle: { paddingLeft: 10, paddingRight: 20},
+    // Hiding the scroll bar
     showsHorizontalScrollIndicator: false,    
 })``;
 

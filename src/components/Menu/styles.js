@@ -1,6 +1,7 @@
 import { StyleSheet, Animated } from 'react-native';
 import styled from 'styled-components/native';
 
+// Creating stylized components
 export const Container = styled(Animated.ScrollView)`
     margin: 0 30px;
 `;
@@ -12,6 +13,7 @@ export const Code = styled.View`
     align-self: center;
 `;
 
+// Creating line width less than 1px
 export const Nav = styled.View`
     margin-top: 30px;
     border-top-width: ${StyleSheet.hairlineWidth}px;
